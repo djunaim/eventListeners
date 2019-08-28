@@ -1,3 +1,21 @@
 body {
     background-color: khaki;
 }
+
+.dessertGroup {
+    background-color: lemonchiffon;
+    color: darksalmon;
+    width: 400px;
+    margin: 10px 10px;
+    text-align: center;
+}
+
+#pieLife {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;    
+}
+
+h1 {
+    text-align: center;
+}

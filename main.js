@@ -1,7 +1,7 @@
 console.log('hi');
 
 const printToDOM = (toPrint, divId) => {
-    document.getElementById(divId).innerHTML += toPrint;
+    document.getElementById(divId).innerHTML = toPrint;
 }
 
 const pieCollection = [
@@ -38,9 +38,10 @@ const pieCollection = [
 ]
 
 const piePrint = (dessert) => {
+    let allTheDesserts = '';
     for (let i=0; i < dessert.length; i++) {
         const dessertCollective = dessert[i];
-        const allTheDesserts = `
+        allTheDesserts += `
         <div class="dessertGroup">
             <h3>${dessertCollective.name}</h3>
             <img src="${dessertCollective.image}">
@@ -50,4 +51,23 @@ const piePrint = (dessert) => {
     }
 }
 
-piePrint(pieCollection);
+const buttonClick = (e) => {
+    // figure out who instructor is for button we click on
+    const instructor = e.target.id
+    // only get those pies from the list of all the pies
+    const selectedPies = [];
+    for (let i = 0; i < pieCollection.length; i++) {
+        const pie = pieCollection[i];
+        if (pie.instructorName === instructor) {
+            selectedPies.push(pie);
+        }
+    }
+    // pass small list of pies back into the pie builder
+    piePrint(selectedPies);
+}
+
+document.getElementById('zoe').addEventListener('click', buttonClick)
+
+document.getElementById('michael').addEventListener('click', buttonClick)
+
+// piePrint(pieCollection);
